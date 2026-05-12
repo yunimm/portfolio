@@ -19,9 +19,9 @@ onUnmounted(() => {
 const t = computed(() => Math.min(1, Math.max(0, scrollY.value / 120)))
 
 const links = [
-	{ href: '#experience', label: 'Experience' },
-	{ href: '#projects', label: 'Projects' },
-	{ href: '#contact', label: 'Contact' },
+	{ to: '/#experience', label: 'Experience' },
+	{ to: '/#projects', label: 'Projects' },
+	{ to: '/#contact', label: 'Contact' },
 ]
 </script>
 
@@ -35,31 +35,31 @@ const links = [
 		}"
 	>
 		<div class="container-narrow flex items-center justify-between h-16">
-			<a href="#top" class="flex items-center gap-2 group">
+			<RouterLink to="/" class="flex items-center gap-2 group">
 				<span
 					class="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-300 via-violet-400 to-fuchsia-400 shadow-lg shadow-violet-500/30 group-hover:scale-110 transition-transform"
 				></span>
 				<span class="font-semibold tracking-tight">Yu.dev</span>
-			</a>
+			</RouterLink>
 
 			<nav class="hidden md:flex items-center gap-1">
-				<a
+				<RouterLink
 					v-for="l in links"
-					:key="l.href"
-					:href="l.href"
+					:key="l.to"
+					:to="l.to"
 					class="px-4 py-2 text-sm text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/5"
 				>
 					{{ l.label }}
-				</a>
+				</RouterLink>
 			</nav>
 
-			<a
-				href="#contact"
+			<RouterLink
+				to="/#contact"
 				class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium glass-strong hover:bg-white/15 transition-colors"
 			>
 				<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-slow"></span>
 				Available
-			</a>
+			</RouterLink>
 		</div>
 
 		<div

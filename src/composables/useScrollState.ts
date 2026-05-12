@@ -3,21 +3,17 @@ import { ref } from 'vue'
 export const scrollProgress = ref(0)
 export const scrollVelocity = ref(0)
 export const activeSection = ref<string>('top')
-export const modalOpen = ref(false)
 
 const SECTIONS = ['top', 'experience', 'projects', 'skills', 'contact']
 
-let initialized = false
-let lastY = 0
-let lastT = 0
-let raf = 0
+let progressInitialized = false
 
-export function initScrollState() {
-	if (initialized) return
-	initialized = true
+export function initScrollProgress() {
+	if (progressInitialized) return
+	progressInitialized = true
 
-	lastY = window.scrollY
-	lastT = performance.now()
+	let lastY = window.scrollY
+	let lastT = performance.now()
 
 	const tick = () => {
 		const y = window.scrollY
@@ -34,10 +30,12 @@ export function initScrollState() {
 		lastY = y
 		lastT = now
 
-		raf = requestAnimationFrame(tick)
+		requestAnimationFrame(tick)
 	}
-	raf = requestAnimationFrame(tick)
+	requestAnimationFrame(tick)
+}
 
+export function setupSectionObservers() {
 	const observers: IntersectionObserver[] = []
 	SECTIONS.forEach(id => {
 		const el = document.getElementById(id)
@@ -53,9 +51,8 @@ export function initScrollState() {
 		obs.observe(el)
 		observers.push(obs)
 	})
-}
-
-export function destroyScrollState() {
-	cancelAnimationFrame(raf)
-	initialized = false
+	return () => {
+		observers.forEach(o => o.disconnect())
+		activeSection.value = 'top'
+	}
 }

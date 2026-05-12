@@ -74,8 +74,8 @@ const formatM = (n: number) => {
 				class="mt-10 flex flex-wrap items-center gap-4 transition-all duration-700 delay-[1100ms]"
 				:class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
 			>
-				<a
-					href="#projects"
+				<RouterLink
+					to="/#projects"
 					class="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white font-medium overflow-hidden transition-transform hover:scale-[1.02]"
 					style="color: #050511"
 				>
@@ -94,16 +94,16 @@ const formatM = (n: number) => {
 					<span
 						class="absolute inset-0 bg-gradient-to-r from-cyan-200 via-violet-200 to-pink-200 opacity-0 group-hover:opacity-100 transition-opacity"
 					></span>
-				</a>
-				<a
-					href="#contact"
+				</RouterLink>
+				<RouterLink
+					to="/#contact"
 					class="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full glass hover:bg-white/10 transition-colors font-medium overflow-hidden"
 				>
 					<span class="relative z-10">Get in touch</span>
 					<span
 						class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"
 					></span>
-				</a>
+				</RouterLink>
 			</div>
 
 			<div class="mt-20 grid grid-cols-3 gap-4 md:gap-6 max-w-2xl">
