@@ -1,29 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useCountUp } from '../composables/useCountUp'
 
 const mounted = ref(false)
-
-const stat1 = useCountUp(4)
-const stat2 = useCountUp(20)
-const stat3 = useCountUp(1000000, 2200)
 
 onMounted(() => {
 	requestAnimationFrame(() => {
 		mounted.value = true
 	})
-	setTimeout(() => {
-		stat1.start()
-		stat2.start()
-		stat3.start()
-	}, 700)
 })
-
-const formatM = (n: number) => {
-	if (n >= 1000000) return (n / 1000000).toFixed(n === 1000000 ? 0 : 1) + 'M'
-	if (n >= 1000) return (n / 1000).toFixed(0) + 'k'
-	return n.toString()
-}
 </script>
 
 <template>
@@ -106,35 +90,6 @@ const formatM = (n: number) => {
 				</RouterLink>
 			</div>
 
-			<div class="mt-20 grid grid-cols-3 gap-4 md:gap-6 max-w-2xl">
-				<div
-					class="glass rounded-2xl p-4 md:p-6 transition-all duration-700 delay-[1300ms]"
-					:class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-				>
-					<div class="text-2xl md:text-4xl font-semibold gradient-text font-mono">
-						{{ stat1.value.value }}+
-					</div>
-					<div class="mt-1 text-xs md:text-sm text-white/50">Years Experience</div>
-				</div>
-				<div
-					class="glass rounded-2xl p-4 md:p-6 transition-all duration-700 delay-[1400ms]"
-					:class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-				>
-					<div class="text-2xl md:text-4xl font-semibold gradient-text font-mono">
-						{{ stat2.value.value }}+
-					</div>
-					<div class="mt-1 text-xs md:text-sm text-white/50">Features Shipped</div>
-				</div>
-				<div
-					class="glass rounded-2xl p-4 md:p-6 transition-all duration-700 delay-[1500ms]"
-					:class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-				>
-					<div class="text-2xl md:text-4xl font-semibold gradient-text font-mono">
-						{{ formatM(stat3.value.value) }}+
-					</div>
-					<div class="mt-1 text-xs md:text-sm text-white/50">Users Reached</div>
-				</div>
-			</div>
 		</div>
 
 		<div
