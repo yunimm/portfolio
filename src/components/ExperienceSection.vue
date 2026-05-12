@@ -5,25 +5,38 @@ const { el, visible } = useReveal()
 
 const experiences = [
 	{
-		period: '2023 — Present',
-		company: 'Buyandship',
+		period: '2024 — Present',
+		company: 'Buyandship Taiwan',
 		role: 'Frontend Engineer',
 		summary:
-			'Full-stack frontend development on a cross-border e-commerce member portal. Responsible for shipping, order consolidation, and payment flow architecture and business logic.',
-		stack: ['Vue 3', 'TypeScript', 'Pinia', 'Vite', 'Playwright'],
+			'Frontend lead at a cross-border e-commerce platform serving Asia-Pacific markets. Built member portal, checkout flows, and bidding systems across 5 codebases — Vue 3, Nuxt, and Astro.',
+		stack: [
+			'Vue 3',
+			'Nuxt',
+			'TypeScript',
+			'Pinia',
+			'Tailwind',
+			'Playwright',
+			'Cloudflare Workers',
+		],
 		highlights: [
-			'Built BuyForYou proxy ordering flow used by 100k+ users',
-			'Authored E2E test infrastructure with Playwright',
-			'Maintained business logic KB across 10+ modules',
+			'Built core auction & payment features that scaled transaction volume 3.75× (80 → 300 orders/hour) — engineered with a state-machine architecture collapsing 60+ UI branches into 4 named states',
+			'Built test automation that catches issues before launch and lets the team ship features 50% more often — 50+ E2E scenarios across 3 regions, with an AI-driven repair loop handling 90% of maintenance autonomously',
+			"Automated the team's release process end-to-end via a Slack bot, freeing up half a day per week across the team — integrates Jira API to auto-generate release notes and trigger notifications",
+			'Made feature development 2–4× faster by modernizing how the team understands legacy code with AI — extracted 326 implicit business rules into a structured knowledge base, validated via A/B experiments',
 		],
 	},
 	{
-		period: '2020 — 2023',
-		company: 'Previous Company',
-		role: 'Software Engineer',
-		summary: 'Previous role description — to be filled in.',
-		stack: ['React', 'Node.js', 'PostgreSQL'],
-		highlights: ['Achievement #1', 'Achievement #2', 'Achievement #3'],
+		period: '2023 — 2024',
+		company: 'Damai Network',
+		role: 'Frontend Engineer',
+		summary:
+			'Frontend engineer at a food ordering platform — led a generational platform rewrite while maintaining zero downtime across production traffic.',
+		stack: ['Vue 2', 'Nuxt 3', 'TypeScript', 'SSR'],
+		highlights: [
+			'Led a full platform rebuild that cut page load time in half — improving SEO and conversion — by migrating Vue 2 → Nuxt 3 with dynamic imports and module splitting (FCP −50%, bundle −30%, Lighthouse +30)',
+			'Migrated a live ordering site with zero downtime — no missed orders, no rollback — using a dual-domain parallel verification flow co-designed with QA',
+		],
 	},
 ]
 </script>
