@@ -21,7 +21,11 @@ onMounted(() => {
 		<TheNav />
 		<TopProgressBar />
 
-		<RouterView />
+		<RouterView v-slot="{ Component }">
+			<KeepAlive include="HomeView">
+				<component :is="Component" />
+			</KeepAlive>
+		</RouterView>
 
 		<TheFooter />
 	</div>
