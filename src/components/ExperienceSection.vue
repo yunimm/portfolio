@@ -7,6 +7,7 @@ const experiences = [
 	{
 		period: '2024 — Present',
 		company: 'Buyandship Taiwan',
+		companyUrl: 'https://www.buyandship.com.tw/',
 		role: 'Frontend Engineer',
 		summary:
 			'Frontend lead at a cross-border e-commerce platform serving Asia-Pacific markets. Built member portal, checkout flows, and bidding systems across 5 codebases — Vue 3, Nuxt, and Astro.',
@@ -14,10 +15,10 @@ const experiences = [
 			'Vue 3',
 			'Nuxt',
 			'TypeScript',
-			'Pinia',
-			'Tailwind',
-			'Playwright',
-			'Cloudflare Workers',
+			'Tailwind CSS',
+			'Node.js',
+			'Express',
+			'Vercel',
 		],
 		highlights: [
 			'Built core auction & payment features that scaled transaction volume 3.75× (80 → 300 orders/hour) — engineered with a state-machine architecture collapsing 60+ UI branches into 4 named states',
@@ -29,13 +30,27 @@ const experiences = [
 	{
 		period: '2023 — 2024',
 		company: 'Damai Network',
+		companyUrl: 'https://www.maifood.com.tw/',
 		role: 'Frontend Engineer',
 		summary:
 			'Frontend engineer at a food ordering platform — led a generational platform rewrite while maintaining zero downtime across production traffic.',
-		stack: ['Vue 2', 'Nuxt 3', 'TypeScript', 'SSR'],
+		stack: ['Vue 2', 'Vuex', 'ElementUI', 'Nuxt 3', 'TypeScript'],
 		highlights: [
 			'Led a full platform rebuild that cut page load time in half — improving SEO and conversion — by migrating Vue 2 → Nuxt 3 with dynamic imports and module splitting (FCP −50%, bundle −30%, Lighthouse +30)',
 			'Migrated a live ordering site with zero downtime — no missed orders, no rollback — using a dual-domain parallel verification flow co-designed with QA',
+		],
+	},
+	{
+		period: '2022 — 2023',
+		company: 'Rongxing',
+		companyUrl: 'https://rosati26558990.weebly.com/',
+		role: 'Frontend Engineer',
+		summary:
+			'Frontend engineer on a WMS (warehouse management) platform — helped lead the rebuild into a decoupled frontend/backend architecture and shipped core B2B warehouse modules.',
+		stack: ['React', 'TypeScript', 'Tailwind'],
+		highlights: [
+			'Helped refactor the WMS into a decoupled frontend/backend architecture — defined frontend module responsibility boundaries, improving maintainability and dev efficiency',
+			'Built core B2B warehouse modules (inbound/outbound, scan-to-ship) in React — automated operational workflows to reduce manual error rate',
 		],
 	},
 ]
@@ -88,7 +103,37 @@ const experiences = [
 					<div class="relative flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-10">
 						<div class="md:w-48 shrink-0">
 							<div class="text-xs font-mono text-white/40">{{ e.period }}</div>
-							<div class="mt-2 text-lg font-semibold">{{ e.company }}</div>
+							<div class="mt-2 text-lg font-semibold">
+								<a
+									v-if="e.companyUrl"
+									:href="e.companyUrl"
+									target="_blank"
+									rel="noopener"
+									class="group/co inline-flex items-center gap-1.5 hover:text-white transition-colors"
+								>
+									<span
+										class="underline decoration-dotted decoration-white/25 underline-offset-4 group-hover/co:decoration-white group-hover/co:decoration-solid transition-all"
+									>
+										{{ e.company }}
+									</span>
+									<svg
+										width="12"
+										height="12"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.5"
+										class="text-white/40 group-hover/co:text-white group-hover/co:-translate-y-0.5 group-hover/co:translate-x-0.5 transition-all"
+									>
+										<path
+											d="M7 17L17 7M17 7H8M17 7v9"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</a>
+								<template v-else>{{ e.company }}</template>
+							</div>
 							<div class="text-sm text-white/60">{{ e.role }}</div>
 						</div>
 
