@@ -6,7 +6,11 @@ const { el, visible } = useReveal()
 const channels = [
 	{ label: 'Email', value: 'yuu9916@gmail.com', href: 'mailto:yuu9916@gmail.com' },
 	{ label: 'GitHub', value: 'github.com/yunimm', href: 'https://github.com/yunimm' },
-	{ label: 'LinkedIn', value: 'linkedin.com/in/...', href: '#' },
+	{
+		label: 'LinkedIn',
+		value: 'linkedin.com/in/chin-yun-liao',
+		href: 'https://www.linkedin.com/in/chin-yun-liao-a96396176/',
+	},
 ]
 </script>
 
