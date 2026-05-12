@@ -68,10 +68,10 @@ onMounted(() => {
 					/ 02 — Projects
 				</div>
 				<h2 class="text-3xl md:text-5xl font-semibold tracking-tight">
-					Monitoring &amp; dashboard demos.
+					Projects.
 				</h2>
 				<p class="mt-4 text-white/60">
-					Tap any card to view screenshots and details.
+					Tap any card for details.
 				</p>
 			</div>
 

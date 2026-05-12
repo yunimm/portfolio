@@ -123,12 +123,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 							v-if="currentMedia.type === 'image'"
 							:src="currentMedia.src"
 							:alt="currentMedia.alt || project.title"
-							class="absolute inset-0 w-full h-full object-cover"
+							class="absolute inset-0 w-full h-full object-contain"
 						/>
 						<video
 							v-else
 							:src="currentMedia.src"
-							class="absolute inset-0 w-full h-full object-cover"
+							class="absolute inset-0 w-full h-full object-contain"
 							autoplay
 							loop
 							muted
@@ -155,17 +155,18 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 						class="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-3 pointer-events-none"
 					>
 						<button
-							class="pointer-events-auto w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/15 transition-colors"
+							class="pointer-events-auto w-11 h-11 rounded-full glass-strong shadow-lg shadow-black/30 flex items-center justify-center text-white hover:scale-110 transition-transform"
+							style="background: rgba(10, 10, 25, 0.55)"
 							aria-label="Previous"
 							@click.stop="prev"
 						>
 							<svg
-								width="16"
-								height="16"
+								width="20"
+								height="20"
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
-								stroke-width="2"
+								stroke-width="2.25"
 							>
 								<path
 									d="M15 18l-6-6 6-6"
@@ -175,17 +176,18 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 							</svg>
 						</button>
 						<button
-							class="pointer-events-auto w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/15 transition-colors"
+							class="pointer-events-auto w-11 h-11 rounded-full glass-strong shadow-lg shadow-black/30 flex items-center justify-center text-white hover:scale-110 transition-transform"
+							style="background: rgba(10, 10, 25, 0.55)"
 							aria-label="Next"
 							@click.stop="next"
 						>
 							<svg
-								width="16"
-								height="16"
+								width="20"
+								height="20"
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
-								stroke-width="2"
+								stroke-width="2.25"
 							>
 								<path
 									d="M9 18l6-6-6-6"
@@ -211,6 +213,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 							? 'w-8 bg-white'
 							: 'w-1.5 bg-white/30 hover:bg-white/50'
 					"
+					:aria-label="`Go to image ${i + 1} of ${project.media.length}`"
+					:aria-current="mediaIndex === i"
 					@click="mediaIndex = i"
 				></button>
 			</div>
@@ -240,11 +244,20 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 				</svg>
 			</a>
 
-			<p class="mt-10 text-white/70 leading-relaxed text-lg max-w-3xl">
-				{{ project.longDesc || project.desc }}
-			</p>
+			<div class="mt-10 flex flex-wrap gap-2 max-w-3xl">
+				<span
+					v-for="t in project.stack"
+					:key="t"
+					class="px-3 py-1 rounded-full text-xs font-mono text-white/70 glass"
+				>
+					{{ t }}
+				</span>
+			</div>
 
-			<div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl">
+			<div
+				v-if="project.metrics.length"
+				class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl"
+			>
 				<div
 					v-for="m in project.metrics"
 					:key="m"
@@ -254,14 +267,38 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 				</div>
 			</div>
 
-			<div class="mt-6 flex flex-wrap gap-2">
-				<span
-					v-for="t in project.stack"
-					:key="t"
-					class="px-3 py-1 rounded-full text-xs font-mono text-white/70 glass"
+			<div class="mt-10 max-w-3xl">
+				<div
+					class="text-[10px] font-mono uppercase tracking-widest text-white/40 mb-3"
 				>
-					{{ t }}
-				</span>
+					Overview
+				</div>
+				<p class="text-white/70 leading-relaxed text-lg">
+					{{ project.longDesc || project.desc }}
+				</p>
+			</div>
+
+			<div
+				v-if="project.highlights.length"
+				class="mt-10 max-w-3xl"
+			>
+				<div
+					class="text-[10px] font-mono uppercase tracking-widest text-white/40 mb-3"
+				>
+					Technical highlights
+				</div>
+				<ul class="space-y-3">
+					<li
+						v-for="h in project.highlights"
+						:key="h"
+						class="flex items-start gap-3 text-white/70 leading-relaxed"
+					>
+						<span
+							class="mt-2 w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 shrink-0"
+						></span>
+						<span>{{ h }}</span>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</main>

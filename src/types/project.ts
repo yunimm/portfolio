@@ -14,6 +14,7 @@ export interface Project {
 	gradient: string
 	accent: string
 	metrics: string[]
+	highlights: string[]
 	stack: string[]
 	media: ProjectMedia[]
 	demoUrl?: string
