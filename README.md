@@ -1,5 +1,39 @@
-# Vue 3 + TypeScript + Vite
+# Portfolio
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Personal portfolio built with Vue 3, TypeScript, Vite, and Tailwind CSS. It presents professional experience, skills, and project case studies.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Features
+
+- Home page with experience, projects, skills, and contact sections.
+- Individual project pages with image and video galleries.
+- Scroll reveal effects, reading progress, cursor glow, and card tilt interactions.
+- Responsive layouts and Vue Router navigation.
+
+## Run locally
+
+```sh
+npm install
+npm run dev
+```
+
+## Build and preview
+
+```sh
+npm run build
+npm run preview
+```
+
+The build command runs the TypeScript check before building with Vite.
+
+## Project structure
+
+- `src/components/` — Page sections and shared presentation components.
+- `src/data/projects.ts` — Project descriptions, technologies, and media references.
+- `src/views/` — Home and project detail pages.
+- `src/composables/` — Scroll and reveal behavior.
+- `src/directives/` — Card tilt interaction.
+- `src/router/` — Routes and navigation behavior.
+
+## Customize
+
+Update project entries in `src/data/projects.ts`, experience and skills in their section components, and contact links in `src/components/ContactSection.vue`.
