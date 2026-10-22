@@ -1,5 +1,7 @@
 # Portfolio
 
+[View my portfolio](https://portfolio.yuu9916.workers.dev/)
+
 Personal portfolio built with Vue 3, TypeScript, Vite, and Tailwind CSS. It presents professional experience, skills, and project case studies.
 
 ## Features
